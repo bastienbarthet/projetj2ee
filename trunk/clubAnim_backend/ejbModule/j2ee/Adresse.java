@@ -14,15 +14,16 @@ import javax.persistence.*;
 @ Entity
 public class Adresse{
 	
-	
-	
-	public String rue;
 	public String numero;
 	public String ville;
 	public int codePostal;
+	public String rue;	
 	
-	
-	
-
+	public Adresse(String rue, String numero, String ville, int codePostal) {
+		this.rue = rue;
+		this.numero = numero;
+		this.ville = ville;
+		this.codePostal = codePostal;
+	}
 
 }

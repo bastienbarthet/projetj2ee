@@ -14,6 +14,8 @@ import javax.ejb.Remote;
 @Remote
 public interface ClientSessionBeanRemote {
 	
+	//creation client
+	public void creer(int _num, String _login, String _password, String _name, String _beneficiaire,String _email, int _tel);
 	
 	//authentification
 	public Client identifier(String login, String password);
@@ -47,12 +49,6 @@ public interface ClientSessionBeanRemote {
 
 		//changer reduc client
 		public void changerReductionClient(int idClient, float newReducClient);
-	
-	
-
-	
-	
-	
 	
 }
 

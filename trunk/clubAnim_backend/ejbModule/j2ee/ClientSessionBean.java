@@ -8,13 +8,17 @@ import javax.persistence.PersistenceContext;
 import j2ee.Adresse;
 
 
-@DeclarationRole
+//@DeclarationRole
 public class ClientSessionBean implements ClientSessionBeanRemote {
 
 	
 	@PersistenceContext
 	EntityManager em;
 	
+	@Override
+	public void creer(int _num, String _login, String _password, String _name, String _beneficiaire,String _email, int _tel){
+		em.persist(new Client(_num,_login,_password,_name,_beneficiaire,_email,_tel));
+	}
 	
 	@Override
 	public Client identifier(String _login, String _password) {
