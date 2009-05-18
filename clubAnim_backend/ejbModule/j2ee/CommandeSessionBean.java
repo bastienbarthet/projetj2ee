@@ -48,7 +48,7 @@ public class CommandeSessionBean implements CommandeSessionBeanRemote {
 	}
 
 	@Override
-	public void modifierQuantitéProduit(int idProduit, int newQuantite) {
+	public void modifierQuantiteProduit(int idProduit, int newQuantite) {
 		// TODO Auto-generated method stub
 
 	}
