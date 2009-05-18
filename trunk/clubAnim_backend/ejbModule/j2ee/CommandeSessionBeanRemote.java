@@ -31,7 +31,7 @@ public interface CommandeSessionBeanRemote {
 			public void supprimerProduit(int idProduit);
 			
 			//ajouter un produit
-			public void modifierQuantitéProduit(int idProduit, int newQuantite);
+			public void modifierQuantiteProduit(int idProduit, int newQuantite);
 		
 			
 
