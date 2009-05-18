@@ -36,6 +36,18 @@ public interface ClientSessionBeanRemote {
 		
 		//renvoyer password client (par mail)
 		public void renvoyerPasswordClient(int idClient);
+		
+		//----------------------------------------
+		// Accessible a l'admin : 
+		
+		
+		//lister client
+		public ArrayList<Client> listerClient();
+
+
+		//changer reduc client
+		public void changerReductionClient(int idClient, float newReducClient);
+	
 	
 
 	

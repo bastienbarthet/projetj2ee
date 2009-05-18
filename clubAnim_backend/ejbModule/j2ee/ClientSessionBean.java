@@ -7,11 +7,23 @@ import javax.persistence.PersistenceContext;
 
 import j2ee.Adresse;
 
+
+@DeclarationRole
 public class ClientSessionBean implements ClientSessionBeanRemote {
 
 	
 	@PersistenceContext
 	EntityManager em;
+	
+	
+	@Override
+	public Client identifier(String _login, String _password) {
+		Client c;
+		c = (Client) em.createQuery("SELECT p FROM Client p WHERE login = _login").getResultList();
+
+		if ( c.getPassword()==_password ) return c;
+		else return null;	
+	}
 	
 	
 	@Override
@@ -37,25 +49,27 @@ public class ClientSessionBean implements ClientSessionBeanRemote {
 		em.find(Client.class, idClient).setTel(newTel);
 	}
 
-	@Override
-	public Client identifier(String _login, String _password) {
-		Client c;
-		if (_login.equals("admin")){
-		c = (Administrateur) em.createQuery("SELECT p FROM Client p WHERE login = _login").getResultList();
-		}
-		else{
-		
-		c = (Client) em.createQuery("SELECT p FROM Client p WHERE login = _login").getResultList();
-		}
-		if ( c.getPassword()==_password ) return c;
-		else return null;	
-	}
+
 
 
 	@Override
 	public void renvoyerPasswordClient(int idClient) {
 		// l'idée c'est de renvoyer le password par mail...
 
+	}
+	//----------------------------------------
+	// Accessible a l'admin : 
+	
+	
+	@Override
+	public ArrayList<Client> listerClient() {
+		return (ArrayList<Client>) em.createQuery("SELECT p FROM Client p").getResultList();
+		
+	}
+	
+	@Override
+	public void changerReductionClient(int idClient, float newReducClient) {
+		em.find(Client.class, idClient).setReduc(newReducClient);
 	}
 
 }

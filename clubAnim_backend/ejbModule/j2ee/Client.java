@@ -24,12 +24,10 @@ public class Client{
 	private String email;
 	private int tel;
 	private Adresse adr;
-	private Date dateCreation;
-	private Date dateSortieMateriel;
-	private Date dateRetourMateriel;
+
 	
 	@OneToMany
-	private ArrayList<Produit> listeDesProduits;
+	private ArrayList<Commande> listeDesCommande;
 	
 
 	// Constructeur
@@ -38,11 +36,7 @@ public class Client{
 			String _name, 
 			String _beneficiaire,
 			String _email, 
-			int _tel, 
-			Date _dateCreation, 
-			Date _dateSortieMateriel, 
-			Date _dateRetourMateriel, 
-			ArrayList<Produit> _listeDesProduits
+			int _tel
 		){
 		this.login=_login ; 
 		this.password=_password; 
@@ -51,9 +45,8 @@ public class Client{
 		this.setNum(_num);
 		this.setName(_name);
 		this.setBeneficiaire(_beneficiaire);
-		this.setDateCreation(_dateCreation);
-		this.setDateRetourMateriel(_dateRetourMateriel);
-		this.setDateSortieMateriel(_dateSortieMateriel);
+
+		listeDesCommande = new ArrayList<Commande>();
 	}
 
 
@@ -89,43 +82,14 @@ public class Client{
 	}
 
 
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
+
+	public void setListeDesCommandes(ArrayList<Commande> listeDesCommandes) {
+		this.listeDesCommande = listeDesCommandes;
 	}
 
 
-	public Date getDateCreation() {
-		return dateCreation;
-	}
-
-
-	public void setDateSortieMateriel(Date dateSortieMateriel) {
-		this.dateSortieMateriel = dateSortieMateriel;
-	}
-
-
-	public Date getDateSortieMateriel() {
-		return dateSortieMateriel;
-	}
-
-
-	public void setDateRetourMateriel(Date dateRetourMateriel) {
-		this.dateRetourMateriel = dateRetourMateriel;
-	}
-
-
-	public Date getDateRetourMateriel() {
-		return dateRetourMateriel;
-	}
-
-
-	public void setListeDesProduits(ArrayList<Produit> listeDesProduits) {
-		this.listeDesProduits = listeDesProduits;
-	}
-
-
-	public ArrayList<Produit> getListeDesProduits() {
-		return listeDesProduits;
+	public ArrayList<Commande> getListeDesCommandes() {
+		return listeDesCommande;
 	}
 
 
