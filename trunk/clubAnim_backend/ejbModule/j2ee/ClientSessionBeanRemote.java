@@ -7,49 +7,48 @@ import javax.ejb.Remote;
 
 /**
  * Interface visible par le client
+ * 
  * @author blehmann
- *
+ * 
  */
 
 @Remote
 public interface ClientSessionBeanRemote {
-	
-	//creation client
-	public void creer(int _num, String _login, String _password, String _name, String _beneficiaire,String _email, int _tel);
-	
-	//authentification
-	public Client identifier(String login, String password);
 
+	// creation client
+	public void creer(String login, String role, float reduc, String password,
+			String beneficiaire, String email, String tel, Adresse adr,
+			ArrayList<Commande> listeDesCommande);
 
-	//espace perso
+	// authentification
+	//renvoi le role, null si c pas bon
+	public String identifier(String login, String password);
 
-		//change password
-		public void changerPasswordClient(int idClient, String ancienMotDePasse, String nouveauMotDePasse);
+	// espace perso
 
-		//changer adresse
-		public void changerAdresse( int idClient, Adresse newAdresse);
-		
-		//changer telephone
-		public void changerTelephone(int idClient, int newTel);
-		
-		// changer mail
-		public void changerMail(int idClient, String newMail);
-		
-		
-		//renvoyer password client (par mail)
-		public void renvoyerPasswordClient(int idClient);
-		
-		//----------------------------------------
-		// Accessible a l'admin : 
-		
-		
-		//lister client
-		public ArrayList<Client> listerClient();
+	// change password
+	public void changerPasswordClient(String login, String ancienMotDePasse,
+			String nouveauMotDePasse);
 
+	// changer adresse
+	public void changerAdresse(String login, Adresse newAdresse);
 
-		//changer reduc client
-		public void changerReductionClient(int idClient, float newReducClient);
-	
+	// changer telephone
+	public void changerTelephone(String login, String newTel);
+
+	// changer mail
+	public void changerMail(String login, String newMail);
+
+	// renvoyer password client (par mail)
+	public void renvoyerPasswordClient(String login);
+
+	// ----------------------------------------
+	// Accessible a l'admin :
+
+	// lister client
+	public ArrayList<Client> listerClient();
+
+	// changer reduc client
+	public void changerReductionClient(String login, float newReducClient);
+
 }
-
-

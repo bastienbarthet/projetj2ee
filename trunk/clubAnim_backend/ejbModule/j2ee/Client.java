@@ -15,14 +15,15 @@ import javax.persistence.*;
 public class Client{
 	
 	@Id
-	private int id;
-	
-	private float reduc;
 	private String login;
+	
+
+	private String role;
+	private float reduc;
 	private String password;
 	private String beneficiaire;
 	private String email;
-	private int tel;
+	private String tel;
 	private Adresse adr;
 
 	
@@ -30,35 +31,22 @@ public class Client{
 	private ArrayList<Commande> listeDesCommande;
 	
 
-	// Constructeur
-	public Client(	int _num, 
-			String _login, String _password,
-			String _name, 
-			String _beneficiaire,
-			String _email, 
-			int _tel
-		){
-		this.login=_login ; 
-		this.password=_password; 
-		this.tel = _tel;
-		this.email = _email;
-		this.setNum(_num);
-		this.setName(_name);
-		this.setBeneficiaire(_beneficiaire);
-
-		listeDesCommande = new ArrayList<Commande>();
-	}
-
-
-	
-	// Set et Get
-	public void setNum(int num) {
-		this.id = num;
-	}
-
-
-	public int getNum() {
-		return id;
+	public Client(String login, String role, float reduc, String password,
+			String beneficiaire, String email, String tel, Adresse adr,
+			ArrayList<Commande> listeDesCommande) {
+		super();
+		this.login = login;
+		this.role = role;
+		this.reduc = reduc;
+		this.password = password;
+		
+		// nom client (exemple "BDE IEP Toulouse", etc..)
+		this.beneficiaire = beneficiaire;
+		
+		this.email = email;
+		this.tel = tel;
+		this.adr = adr;
+		this.listeDesCommande = listeDesCommande;
 	}
 
 
@@ -132,13 +120,13 @@ public class Client{
 
 
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
 
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
@@ -152,6 +140,18 @@ public class Client{
 
 	public float getReduc() {
 		return reduc;
+	}
+
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
+
+	public String getRole() {
+		return role;
 	}
 	
 	

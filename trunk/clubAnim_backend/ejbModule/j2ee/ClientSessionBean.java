@@ -7,73 +7,77 @@ import javax.persistence.PersistenceContext;
 
 import j2ee.Adresse;
 
-
-//@DeclarationRole
 public class ClientSessionBean implements ClientSessionBeanRemote {
 
-	
 	@PersistenceContext
 	EntityManager em;
-	
+
 	@Override
-	public void creer(int _num, String _login, String _password, String _name, String _beneficiaire,String _email, int _tel){
-		em.persist(new Client(_num,_login,_password,_name,_beneficiaire,_email,_tel));
+	public void creer(String login, String role, float reduc, String password,
+			String beneficiaire, String email, String tel, Adresse adr,
+			ArrayList<Commande> listeDesCommande) {
+		em.persist(new Client(login, role, reduc, password, beneficiaire,
+				email, tel, adr, listeDesCommande));
 	}
-	
+
+	/**
+	 * renvoi le role
+	 */
 	@Override
-	public Client identifier(String _login, String _password) {
+	public String identifier(String _login, String _password) {
 		Client c;
-		c = (Client) em.createQuery("SELECT p FROM Client p WHERE login = _login").getResultList();
+		c = (Client) em.createQuery(
+				"SELECT p FROM Client p WHERE login = _login").getResultList();
 
-		if ( c.getPassword()==_password ) return c;
-		else return null;	
-	}
-	
-	
-	@Override
-	public void changerPasswordClient(int idClient, String ancienMotDePasse, String nouveauMotDePasse){
-		Client c = em.find(Client.class, idClient);
-		if (c.getPassword()==ancienMotDePasse) c.setPassword(nouveauMotDePasse);
-	}
-	
-	
-	@Override
-	public void changerAdresse( int idClient, Adresse newAdresse) {
-		em.find(Client.class, idClient).setAdr(newAdresse);
-	}
-	
-	@Override
-	public void changerMail(int idClient, String newMail) {
-		em.find(Client.class, idClient).setEmail(newMail);
-
+		if (c.getPassword() == _password)
+			return c.getRole();
+		else
+			return null;
 	}
 
 	@Override
-	public void changerTelephone(int idClient, int newTel) {
-		em.find(Client.class, idClient).setTel(newTel);
+	public void changerPasswordClient(String login, String ancienMotDePasse,
+			String nouveauMotDePasse) {
+		Client c = em.find(Client.class, login);
+		if (c.getPassword() == ancienMotDePasse)
+			c.setPassword(nouveauMotDePasse);
 	}
 
-
-
+	@Override
+	public void changerAdresse(String login, Adresse newAdresse) {
+		em.find(Client.class, login).setAdr(newAdresse);
+	}
 
 	@Override
-	public void renvoyerPasswordClient(int idClient) {
+	public void changerMail(String login, String newMail) {
+		em.find(Client.class, login).setEmail(newMail);
+
+	}
+
+	@Override
+	public void changerTelephone(String login, String newTel) {
+		em.find(Client.class, login).setTel(newTel);
+	}
+
+	@Override
+	public void renvoyerPasswordClient(String login) {
 		// l'idée c'est de renvoyer le password par mail...
 
 	}
-	//----------------------------------------
-	// Accessible a l'admin : 
-	
-	
+
+	// ----------------------------------------
+	// Accessible a l'admin :
+
 	@Override
 	public ArrayList<Client> listerClient() {
-		return (ArrayList<Client>) em.createQuery("SELECT p FROM Client p").getResultList();
-		
+		return (ArrayList<Client>) em.createQuery("SELECT p FROM Client p")
+				.getResultList();
+
 	}
-	
+
 	@Override
-	public void changerReductionClient(int idClient, float newReducClient) {
-		em.find(Client.class, idClient).setReduc(newReducClient);
+	public void changerReductionClient(String login, float newReducClient) {
+		em.find(Client.class, login).setReduc(newReducClient);
 	}
 
 }
