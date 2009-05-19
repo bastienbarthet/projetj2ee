@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import j2ee.Client;
 import j2ee.Commande;
+import j2ee.Produit;
+
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
@@ -101,9 +103,19 @@ public class Realisation {
 		return hf;
 	}
 
-	private static PdfPCell tableauCommande (Commande cmd) {
-		
-		return null;
+	private static PdfPTable tableauCommande (Commande cmd) {
+		float [] tailles = {5.0f,1.0f,1.0f,1.0f};
+		PdfPTable table1 = new PdfPTable (tailles);
+		for (int i = 0; i<cmd.getListeDesProduits().size(); i++) {
+			Produit prod1 = cmd.getListeDesProduits().get(i);
+			Phrase ph1 = new Phrase (prod1.getCategorie() + " --> " + prod1.getSousCategorie() + "\n");
+			ph1.add("\t" + prod1.getName());
+			table1.addCell(ph1);
+			table1.addCell("");
+			table1.addCell(prod1.getCategorie());
+			table1.addCell((new Float (prod1.getPrix())).toString());
+		}
+		return table1;
 	}
 	
 	public static void generate (Commande cmd, Client cl) {
@@ -119,7 +131,7 @@ public class Realisation {
 		doc.setFooter(piedDePage());
 		doc.open();
 		try {
-			doc.add(new Paragraph ("C'est presque bon pour l'en tête"));
+			doc.add(tableauCommande(cmd));
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
