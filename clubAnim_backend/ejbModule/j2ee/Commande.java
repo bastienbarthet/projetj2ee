@@ -17,29 +17,33 @@ public class Commande{
 	@Id
 	private int id;
 	
-	private String name;
-	private String beneficiaire;
-	private Date dateCreation;
+	private String titreCommande;
+	
+	
 	private Date dateSortieMateriel;
 	private Date dateRetourMateriel;
 	
+	
+	private class Couple{
+		public Produit produit;
+		public int quantite;
+	}
+	
 	@OneToMany
-	private ArrayList<Produit> listeDesProduits;
+	private ArrayList<Couple> listeDesProduits;
+	
+	
 	
 
 	// Constructeur
 	public Commande(	int _num, 
 			String _name, 
-			String _beneficiaire, 
-			Date _dateCreation, 
 			Date _dateSortieMateriel, 
 			Date _dateRetourMateriel, 
 			ArrayList<Produit> _listeDesProduits
 		){
 		this.setNum(_num);
 		this.setName(_name);
-		this.setBeneficiaire(_beneficiaire);
-		this.setDateCreation(_dateCreation);
 		this.setDateRetourMateriel(_dateRetourMateriel);
 		this.setDateSortieMateriel(_dateSortieMateriel);
 	}
@@ -58,32 +62,12 @@ public class Commande{
 
 
 	public void setName(String name) {
-		this.name = name;
+		this.titreCommande = name;
 	}
 
 
 	public String getName() {
-		return name;
-	}
-
-
-	public void setBeneficiaire(String beneficiaire) {
-		this.beneficiaire = beneficiaire;
-	}
-
-
-	public String getBeneficiaire() {
-		return beneficiaire;
-	}
-
-
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
-	}
-
-
-	public Date getDateCreation() {
-		return dateCreation;
+		return titreCommande;
 	}
 
 
@@ -118,13 +102,6 @@ public class Commande{
 
 
 
-
-	
-	
-	
-	
-	
-	
 
 
 }
