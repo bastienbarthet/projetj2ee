@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 
 @ Entity
-public class Produit{
+public abstract class Produit{
 	
 	@Id
 	private int ref;
@@ -22,18 +22,17 @@ public class Produit{
 	
 	private float prix;
 	
-	private String categorie;
-	private String sousCategorie;
-	
 	private String cheminversImage;
-	
-	public Produit(int _ref, String _name, String _desc, float _prix){
-		this.setRef(_ref);
-		this.name=_name;
-		this.description=_desc;
-		this.setPrix(_prix);
+
+	public Produit(int ref, String name, String description, float prix,
+			String categorie, String sousCategorie, String cheminversImage) {
+		super();
+		this.ref = ref;
+		this.name = name;
+		this.description = description;
+		this.prix = prix;
+		this.cheminversImage = cheminversImage;
 	}
-	
 	// Set et Get
 	
 	public String getName(){
@@ -58,22 +57,6 @@ public class Produit{
 		return prix;
 	}
 
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
-	}
-
-	public String getCategorie() {
-		return categorie;
-	}
-
-	public void setSousCategorie(String sousCategorie) {
-		this.sousCategorie = sousCategorie;
-	}
-
-	public String getSousCategorie() {
-		return sousCategorie;
-	}
-
 	public void setRef(int ref) {
 		this.ref = ref;
 	}
@@ -89,6 +72,9 @@ public class Produit{
 	public String getCheminversImage() {
 		return cheminversImage;
 	}
+	
+	public abstract String getCategorie();
+	public abstract String getSousCategorie();
 	
 	
 }
