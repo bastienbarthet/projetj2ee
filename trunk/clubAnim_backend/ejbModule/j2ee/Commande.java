@@ -19,7 +19,6 @@ public class Commande{
 	
 	private String titreCommande;
 	
-	
 	private Date dateSortieMateriel;
 	private Date dateRetourMateriel;
 	
@@ -30,7 +29,7 @@ public class Commande{
 	}
 	
 	@OneToMany
-	private ArrayList<Couple> listeDesProduits;
+	private ArrayList<Produit> listeDesProduits;
 	
 	
 	
