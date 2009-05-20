@@ -22,20 +22,19 @@ public interface ProduitSessionBeanRemote {
 
 	// lister produit disponible d'une souscatégorie
 	public ArrayList<Produit> listerProduitSousCategorie(String sousCategorie);
+	
+	//ajouter un produit à la BD
+	public void ajouterProduit(Produit newProduit);
 
-
-	//ajouter un produit
-	public void ajouterProduit(int idProduit, int quantite);
-
-	//supprimer un produit
+	//supprimer un produit à la BD
 	public void supprimerProduit(int idProduit);
 
-	//changer une quantité
-	public void changerQuantiteProduit(int idProduit, int newQuantite);
-	
-	
+
 	// modification produit
 
+			//changer une quantité de produit dispo à la BD
+			public void modifierQuantite(int idProduit, int newQuantite);
+	
 			//modifier prix
 			public void modifierPrix(int idProduit, float newPrix);
 
@@ -48,15 +47,6 @@ public interface ProduitSessionBeanRemote {
 			//modifier chemin vers image
 			public void modifierCheminVersImage(int idProduit, String newChemin);
 		
-			//modifier quantité
-			public void modifierQuantite(int idProduit, int newQuantite);
-		
-			//modifier catégorie
-			public void modifierCategorie(int idProduit, String newCategorie);
-		
-			//modifier souscatégorie
-			public void modifierSousCategorie(int idProduit, String newSousCategorie);
-
 
 }
 

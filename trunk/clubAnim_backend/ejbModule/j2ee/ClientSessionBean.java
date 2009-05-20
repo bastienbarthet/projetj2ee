@@ -36,11 +36,13 @@ public class ClientSessionBean implements ClientSessionBeanRemote {
 	}
 
 	@Override
-	public void changerPasswordClient(String login, String ancienMotDePasse,
+	public boolean changerPasswordClient(String login, String ancienMotDePasse,
 			String nouveauMotDePasse) {
 		Client c = em.find(Client.class, login);
-		if (c.getPassword() == ancienMotDePasse)
+		if (c.getPassword() == ancienMotDePasse) {
 			c.setPassword(nouveauMotDePasse);
+			return true;
+		} else	return false;
 	}
 
 	@Override
@@ -63,6 +65,10 @@ public class ClientSessionBean implements ClientSessionBeanRemote {
 	public void renvoyerPasswordClient(String login) {
 		// l'idée c'est de renvoyer le password par mail...
 
+	}
+	
+	public ArrayList<Commande> listerCommandeClient(String login){
+		return em.find(Client.class, login).getListeDesCommandes();
 	}
 
 	// ----------------------------------------

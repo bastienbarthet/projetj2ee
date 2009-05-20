@@ -2,84 +2,71 @@ package j2ee;
 
 import java.util.ArrayList;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 public class ProduitSessionBean implements ProduitSessionBeanRemote {
 
-	@Override
-	public void ajouterProduit(int idProduit, int quantite) {
-		// TODO Auto-generated method stub
+	@PersistenceContext
+	EntityManager em;
 
-	}
-
-	@Override
-	public void changerQuantiteProduit(int idProduit, int newQuantite) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public ArrayList<Produit> listerProduit() {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList<Produit>) em.createQuery("SELECT p FROM Produit p").getResultList();
 	}
 
 	@Override
-	public ArrayList<Produit> listerProduitCategorie(String categorie) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Produit> listerProduitCategorie(String _categorie) {
+		return (ArrayList<Produit>) em.createQuery("SELECT p FROM Produit p WHERE categorie=_categorie").getResultList();
 	}
 
 	@Override
-	public ArrayList<Produit> listerProduitSousCategorie(String sousCategorie) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Produit> listerProduitSousCategorie(String _sousCategorie) {
+		return (ArrayList<Produit>) em.createQuery("SELECT p FROM Produit p WHERE sousCategorie=_sousCategorie").getResultList();
 	}
 
 	@Override
-	public void modifierCategorie(int idProduit, String newCategorie) {
-		// TODO Auto-generated method stub
+	public void ajouterProduit(Produit newProduit){
+		em.persist(newProduit);
 
 	}
-
 	@Override
 	public void modifierCheminVersImage(int idProduit, String newChemin) {
-		// TODO Auto-generated method stub
+		em.find(Produit.class, idProduit).setCheminversImage(newChemin);
 
 	}
 
 	@Override
 	public void modifierDescription(int idProduit, String newDescription) {
-		// TODO Auto-generated method stub
+		em.find(Produit.class, idProduit).setDescription(newDescription);
 
 	}
 
 	@Override
 	public void modifierPrix(int idProduit, float newPrix) {
-		// TODO Auto-generated method stub
+		em.find(Produit.class, idProduit).setPrix(newPrix);
 
 	}
 
 	@Override
 	public void modifierQuantite(int idProduit, int newQuantite) {
-		// TODO Auto-generated method stub
+		em.find(Produit.class, idProduit).setQuantite(newQuantite);
 
 	}
 
-	@Override
-	public void modifierSousCategorie(int idProduit, String newSousCategorie) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void modifierTitre(int idProduit, String newTitre) {
-		// TODO Auto-generated method stub
+		em.find(Produit.class, idProduit).setName(newTitre);
 
 	}
 
 	@Override
 	public void supprimerProduit(int idProduit) {
-		// TODO Auto-generated method stub
+		em.remove( em.find(Produit.class, idProduit) );
 
 	}
+
 
 }

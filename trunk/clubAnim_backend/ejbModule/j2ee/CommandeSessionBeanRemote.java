@@ -15,23 +15,20 @@ import javax.ejb.Remote;
 public interface CommandeSessionBeanRemote {
 	
 	
-	//nouveauDevis
-	public void creerCommande(Date dateSortieMateriel, Date dateRetourMateriel);
-
-	//Lister les commandes existantes
-	public ArrayList<Commande> listCommandeClient();
+	//nouvelleCommande
+	public void creerCommande(String titreCommande, Date dateSortieMateriel, Date dateRetourMateriel);
 
 	//editer une commande
 	public void editerCommande(int idCommande);
 	
 			//ajouter un produit
-			public void ajouterProduit(int idProduit, int quantite);
+			public void ajouterProduit(int idCommande, int idProduit, int quantite);
 		
 			//supprimer un produit
-			public void supprimerProduit(int idProduit);
+			public void supprimerProduit(int idCommande, int idProduit);
 			
 			//ajouter un produit
-			public void modifierQuantiteProduit(int idProduit, int newQuantite);
+			public void modifierQuantiteProduit(int idCommande, int idProduit, int newQuantite);
 		
 			
 
@@ -46,10 +43,10 @@ public interface CommandeSessionBeanRemote {
 	
 	
 	//changer date de sortie materiel
-	public void changerDateSortie(String newDateSortie);
+	public void changerDateSortie(int idCommande, Date newDateSortie);
 
 	//changer date de retour materiel
-	public void changerDateRetour(String newDateRetour);
+	public void changerDateRetour(int idCommande, Date newDateRetour);
 	
 	
 	//parties admin
