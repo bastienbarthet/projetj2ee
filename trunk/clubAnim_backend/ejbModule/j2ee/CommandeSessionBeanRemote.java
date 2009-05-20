@@ -16,9 +16,10 @@ public interface CommandeSessionBeanRemote {
 	
 	
 	//nouvelleCommande
-	public void creerCommande(String titreCommande, Date dateSortieMateriel, Date dateRetourMateriel);
+	public int creerCommande(String titreCommande, Date dateSortieMateriel, Date dateRetourMateriel);
 
 	//editer une commande
+	// fou un idCommande dans la session?
 	public void editerCommande(int idCommande);
 	
 			//ajouter un produit
@@ -29,7 +30,12 @@ public interface CommandeSessionBeanRemote {
 			
 			//ajouter un produit
 			public void modifierQuantiteProduit(int idCommande, int idProduit, int newQuantite);
-		
+			
+			//changer date de sortie materiel
+			public void changerDateSortie(int idCommande, Date newDateSortie);
+
+			//changer date de retour materiel
+			public void changerDateRetour(int idCommande, Date newDateRetour);
 			
 
 	//supprimer une commande
@@ -40,13 +46,6 @@ public interface CommandeSessionBeanRemote {
 
 	//valider un devis (passer commande)
 	public void validerCommande(int idCommande);
-	
-	
-	//changer date de sortie materiel
-	public void changerDateSortie(int idCommande, Date newDateSortie);
-
-	//changer date de retour materiel
-	public void changerDateRetour(int idCommande, Date newDateRetour);
 	
 	
 	//parties admin

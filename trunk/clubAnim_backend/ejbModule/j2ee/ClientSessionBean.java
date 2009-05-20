@@ -16,8 +16,14 @@ public class ClientSessionBean implements ClientSessionBeanRemote {
 	public void creer(String login, String role, float reduc, String password,
 			String beneficiaire, String email, String tel, Adresse adr,
 			ArrayList<Commande> listeDesCommande) {
+		Client c = em.find(Client.class, login);
+		if (c!=null){
+			
+		}
+		else {
 		em.persist(new Client(login, role, reduc, password, beneficiaire,
 				email, tel, adr, listeDesCommande));
+		}
 	}
 
 	/**

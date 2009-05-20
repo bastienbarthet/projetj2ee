@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.persistence.*;
 
@@ -22,8 +23,7 @@ public class Commande{
 	private Date dateRetourMateriel;
 
 	@OneToMany
-	private ArrayList<Produit> listeDesProduits;
-	private ArrayList<Integer> listeDesQuantites;
+	private ListeProduitCommande listeDesProduits;
 	
 	
 	public Commande(int id, String titreCommande, Date dateSortieMateriel,
@@ -33,8 +33,7 @@ public class Commande{
 		this.titreCommande = titreCommande;
 		this.dateSortieMateriel = dateSortieMateriel;
 		this.dateRetourMateriel = dateRetourMateriel;
-		this.listeDesProduits = new ArrayList<Produit>();
-		this.listeDesQuantites = new ArrayList<Integer>();
+		this.listeDesProduits = new ListeProduitCommande();
 	}
 
 	public int getId() {
@@ -71,19 +70,14 @@ public class Commande{
 		return dateRetourMateriel;
 	}
 
-	public ArrayList<Produit> getListeDesProduits() {
+	public ListeProduitCommande getListeDesProduits() {
 		return listeDesProduits;
 	}
 
 
-	public ArrayList<Integer> getListeDesQuantites() {
-		return listeDesQuantites;
-	}
-
-
 	public void ajouterProduit(Produit newProduit, int quantite){
-		listeDesProduits.add(newProduit);
-		listeDesQuantites.add(quantite);
+		listeDesProduits.ajouter(newProduit, quantite);
+
 	}
 
 
