@@ -14,6 +14,10 @@ import javax.ejb.Remote;
 @Remote
 public interface ProduitSessionBeanRemote {
 	
+	//creer produit
+	public void creerProduit(String name, String description, float prix,
+			String categorie, String sousCategorie, String cheminversImage);
+	
 	// lister produit disponible
 	public ArrayList<Produit> listerProduit();
 

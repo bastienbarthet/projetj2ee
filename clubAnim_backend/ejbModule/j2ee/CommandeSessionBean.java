@@ -14,9 +14,10 @@ public class CommandeSessionBean implements CommandeSessionBeanRemote {
 
 
 	@Override
-	public void creerCommande(String titreCommande, Date dateSortieMateriel, Date dateRetourMateriel){
+	public int creerCommande(String titreCommande, Date dateSortieMateriel, Date dateRetourMateriel){
 		int id = cpt++;
 		em.persist(new Commande(id, titreCommande, dateSortieMateriel, dateRetourMateriel) );
+		return id;
 	}
 	
 	@Override
@@ -45,13 +46,23 @@ public class CommandeSessionBean implements CommandeSessionBeanRemote {
 
 	@Override
 	public ArrayList<Commande> listerCommandes() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return (ArrayList<Commande>) em.createQuery("SELECT p FROM Commande p").getResultList();
+		}
 
+	
 	@Override
 	public void modifierQuantiteProduit(int idCommande, int idProduit, int newQuantite) {
-		// TODO Auto-generated method stub
+		Produit prod = em.find(Produit.class, idProduit);
+		
+		ArrayList<Produit> listprod = em.find(Commande.class, idCommande).getListeDesProduits();
+		ArrayList<Integer> listquant = em.find(Commande.class, idCommande).getListeDesQuantites();
+		
+		int pos = listprod.indexOf(prod);
+		
+		listprod.remove(pos);
+		listquant.remove(pos);
+		listprod.add(prod);
+		listquant.add((Integer) newQuantite);
 
 	}
 
@@ -75,7 +86,8 @@ public class CommandeSessionBean implements CommandeSessionBeanRemote {
 
 	@Override
 	public void supprimerCommande(int idCommande) {
-		// TODO Auto-generated method stub
+		em.find(Commande.class, idCommande);
+		
 
 	}
 
