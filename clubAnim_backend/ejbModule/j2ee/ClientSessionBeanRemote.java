@@ -22,12 +22,13 @@ public interface ClientSessionBeanRemote {
 
 	// authentification
 	//renvoi le role, null si c pas bon
+	// a priori, role = "admin" ou "client"
 	public String identifier(String login, String password);
 
 	// espace perso
 
 	// change password
-	public void changerPasswordClient(String login, String ancienMotDePasse,
+	public boolean changerPasswordClient(String login, String ancienMotDePasse,
 			String nouveauMotDePasse);
 
 	// changer adresse
@@ -41,6 +42,8 @@ public interface ClientSessionBeanRemote {
 
 	// renvoyer password client (par mail)
 	public void renvoyerPasswordClient(String login);
+	
+	public ArrayList<Commande> listerCommandeClient(String login);
 
 	// ----------------------------------------
 	// Accessible a l'admin :

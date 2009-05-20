@@ -16,8 +16,8 @@ public class Client{
 	
 	@Id
 	private String login;
-	
 
+	// a priori, role = "admin" ou "client"
 	private String role;
 	private float reduc;
 	private String password;

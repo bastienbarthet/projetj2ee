@@ -20,6 +20,8 @@ public abstract class Produit{
 	
 	private String description;
 	
+	private int quantite;
+	
 	private float prix;
 	
 	private String cheminversImage;
@@ -75,6 +77,14 @@ public abstract class Produit{
 	
 	public abstract String getCategorie();
 	public abstract String getSousCategorie();
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
 	
 	
 }

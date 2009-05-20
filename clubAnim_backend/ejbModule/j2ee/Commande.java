@@ -18,44 +18,26 @@ public class Commande{
 	private int id;
 	
 	private String titreCommande;
-	
 	private Date dateSortieMateriel;
 	private Date dateRetourMateriel;
-	
-	
-	private class Couple{
-		public Produit produit;
-		public int quantite;
-	}
-	
+
 	@OneToMany
 	private ArrayList<Produit> listeDesProduits;
+	private ArrayList<Integer> listeDesQuantites;
 	
 	
-	
-
-	// Constructeur
-	public Commande(	int _num, 
-			String _name, 
-			Date _dateSortieMateriel, 
-			Date _dateRetourMateriel, 
-			ArrayList<Produit> _listeDesProduits
-		){
-		this.setNum(_num);
-		this.setName(_name);
-		this.setDateRetourMateriel(_dateRetourMateriel);
-		this.setDateSortieMateriel(_dateSortieMateriel);
+	public Commande(int id, String titreCommande, Date dateSortieMateriel,
+			Date dateRetourMateriel) {
+		super();
+		this.id = id;
+		this.titreCommande = titreCommande;
+		this.dateSortieMateriel = dateSortieMateriel;
+		this.dateRetourMateriel = dateRetourMateriel;
+		this.listeDesProduits = new ArrayList<Produit>();
+		this.listeDesQuantites = new ArrayList<Integer>();
 	}
 
-
-	
-	// Set et Get
-	public void setNum(int num) {
-		this.id = num;
-	}
-
-
-	public int getNum() {
+	public int getId() {
 		return id;
 	}
 
@@ -89,18 +71,20 @@ public class Commande{
 		return dateRetourMateriel;
 	}
 
-
-	public void setListeDesProduits(ArrayList<Produit> listeDesProduits) {
-		this.listeDesProduits = listeDesProduits;
-	}
-
-
 	public ArrayList<Produit> getListeDesProduits() {
 		return listeDesProduits;
 	}
 
 
+	public ArrayList<Integer> getListeDesQuantites() {
+		return listeDesQuantites;
+	}
 
+
+	public void ajouterProduit(Produit newProduit, int quantite){
+		listeDesProduits.add(newProduit);
+		listeDesQuantites.add(quantite);
+	}
 
 
 }
