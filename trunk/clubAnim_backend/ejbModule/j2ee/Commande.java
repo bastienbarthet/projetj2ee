@@ -77,7 +77,32 @@ public class Commande{
 
 	public void ajouterProduit(Produit newProduit, int quantite){
 		listeDesProduits.ajouter(newProduit, quantite);
-
+	}
+	
+	public boolean changerQuantité(Produit p, int newQuantite){
+		ListeProduitCategorie lc = listeDesProduits.getListeDeCategorie().get(p.getCategorie());
+		if (lc ==null){
+			return false;
+		}
+		else{
+			ListeProduitSousCategorie lsc = lc.getListeDeCategorie().get(p.getSouscategorie());
+			if (lsc==null){
+				return false;
+			}
+			else{
+				return lsc.modifierQuantite(p, newQuantite);
+			}
+		}
+	}
+	
+	public void supprimerProduit(Produit p){
+		ListeProduitCategorie lc = listeDesProduits.getListeDeCategorie().get(p.getCategorie());
+		if (lc !=null){
+			ListeProduitSousCategorie lsc = lc.getListeDeCategorie().get(p.getSouscategorie());
+			if (lsc!=null){
+				lsc.supprimerProduit(p);
+			}
+		}
 	}
 
 

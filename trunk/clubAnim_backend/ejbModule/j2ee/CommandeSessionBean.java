@@ -28,20 +28,17 @@ public class CommandeSessionBean implements CommandeSessionBeanRemote {
 	@Override
 	public void changerDateRetour(int idCommande, Date newDateRetour) {
 		em.find(Commande.class, idCommande).setDateRetourMateriel(newDateRetour);
-
 	}
 
 	@Override
 	public void changerDateSortie(int idCommande, Date newDateSortie) {
 		em.find(Commande.class, idCommande).setDateSortieMateriel(newDateSortie);
-
 	}
 
 
 	@Override
 	public void editerCommande(int idCommande) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -52,17 +49,9 @@ public class CommandeSessionBean implements CommandeSessionBeanRemote {
 	
 	@Override
 	public void modifierQuantiteProduit(int idCommande, int idProduit, int newQuantite) {
-		Produit prod = em.find(Produit.class, idProduit);
 		
-		ArrayList<Produit> listprod = em.find(Commande.class, idCommande).getListeDesProduits();
-		ArrayList<Integer> listquant = em.find(Commande.class, idCommande).getListeDesQuantites();
-		
-		int pos = listprod.indexOf(prod);
-		
-		listprod.remove(pos);
-		listquant.remove(pos);
-		listprod.add(prod);
-		listquant.add((Integer) newQuantite);
+		Produit p = em.find(Produit.class, idProduit);
+		em.find(Commande.class, idCommande).changerQuantité(p, newQuantite);
 
 	}
 
