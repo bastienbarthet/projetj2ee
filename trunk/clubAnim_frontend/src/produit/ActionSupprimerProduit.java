@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ActionSupprimerProduit
@@ -38,13 +39,22 @@ public class ActionSupprimerProduit extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
 		
-		try {
-			Context c = new InitialContext();
-			ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-			sessionBean.supprimerProduit(idProduit);
-			//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
-		} catch (Exception e) {
-   			request.setAttribute("error",e);
+		HttpSession session = request.getSession();
+		String role = (String)session.getAttribute("role");
+		
+		if (role.equals("admin")){
+			try {
+				Context c = new InitialContext();
+				ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
+				sessionBean.supprimerProduit(idProduit);
+				//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
+			} catch (Exception e) {
+	   			request.setAttribute("error",e);
+			}
+		}
+		
+		else {
+			//rediriger vers l'autentification
 		}
    			
 	}

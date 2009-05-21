@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ActionCreerProduit
@@ -43,16 +44,25 @@ public class ActionCreerProduit extends HttpServlet {
 		String categorie = request.getParameter("categorie");
 		String sousCategorie = request.getParameter("sousCategorie");
 		String cheminversImage = request.getParameter("cheminversImage");
+		HttpSession session = request.getSession();
+		String role = (String)session.getAttribute("role");
 		
-		try {
-			Context c = new InitialContext();
-			ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-			sessionBean.creerProduit(name, description, prix, categorie, sousCategorie, cheminversImage);
-			//response.sendRedirect("produitCree.html");
-		} catch (Exception e) {
-   			request.setAttribute("error",e);
-   			request.getRequestDispatcher("error.jsp").forward(request, response);
+		if (role.equals("admin")){
+			try {
+				Context c = new InitialContext();
+				ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
+				sessionBean.creerProduit(name, description, prix, categorie, sousCategorie, cheminversImage);
+				//response.sendRedirect("produitCree.html");
+			} catch (Exception e) {
+	   			request.setAttribute("error",e);
+	   			request.getRequestDispatcher("error.jsp").forward(request, response);
+			}
 		}
+		
+		else {
+			//renvoyer a l'identification
+		}
+		
 	}
 
 }
