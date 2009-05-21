@@ -39,8 +39,8 @@ public class ProduitSessionBean implements ProduitSessionBeanRemote {
 	}
 
 	@Override
-	public void ajouterProduit(Produit newProduit) {
-		em.persist(newProduit);
+	public void ajouterProduit(int idProduit, int idCommande, int quantite) {
+		//em.persist(newProduit);
 
 	}
 

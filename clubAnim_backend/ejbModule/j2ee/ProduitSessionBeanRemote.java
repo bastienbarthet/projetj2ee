@@ -28,7 +28,7 @@ public interface ProduitSessionBeanRemote {
 	public ArrayList<Produit> listerProduitSousCategorie(String sousCategorie);
 	
 	//ajouter un produit à la BD
-	public void ajouterProduit(Produit newProduit);
+	public void ajouterProduit(int idProduit, int idCommande, int quantite);
 
 	//supprimer un produit à la BD
 	public void supprimerProduit(int idProduit);
