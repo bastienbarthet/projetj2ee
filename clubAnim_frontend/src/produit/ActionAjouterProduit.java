@@ -47,11 +47,10 @@ public class ActionAjouterProduit extends HttpServlet {
 		String cheminVersImage = request.getParameter("cheminVersImage");
 		Produit newProduit = new Produit(ref, name, description, prix, categorie, sousCategorie, cheminVersImage);
 		
-		
 		try {
 			Context c = new InitialContext();
 			ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-			sessionBean.ajouterProduit(newProduit);
+			//sessionBean.ajouterProduit(newProduit);
 			//response.sendRedirect("produitAjoute.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);

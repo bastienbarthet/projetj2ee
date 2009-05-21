@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ActionModifierPrix
@@ -39,14 +40,22 @@ public class ActionModifierPrix extends HttpServlet {
 		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
 		int newPrix = Integer.parseInt(request.getParameter("newPrix"));
 		
-		try {
-			Context c = new InitialContext();
-			ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-			sessionBean.modifierPrix(idProduit, newPrix);
-			//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
-		} catch (Exception e) {
-   			request.setAttribute("error",e);
-   			request.getRequestDispatcher("error.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		String role = (String)session.getAttribute("role");
+		
+		if (role.equals("admin")){
+			try {
+				Context c = new InitialContext();
+				ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
+				sessionBean.modifierPrix(idProduit, newPrix);
+				//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
+			} catch (Exception e) {
+	   			request.setAttribute("error",e);
+	   			request.getRequestDispatcher("error.jsp").forward(request, response);
+			}
+		}
+		else {
+			//redirection
 		}
 	}
 

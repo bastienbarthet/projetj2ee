@@ -1,8 +1,10 @@
 package client;
 
+import j2ee.Client;
 import j2ee.ClientSessionBeanRemote;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -40,8 +42,9 @@ public class ActionListerClient extends HttpServlet {
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			sessionBean.listerClient();
-			//response.sendRedirect("creationClientOk.html");
+			ArrayList<Client> listeDesClients = sessionBean.listerClient();
+			// la va faloir creer du code html pour afficher la liste des clients, ds un jsp par exemple
+			//response.sendRedirect("la liste des clients.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);
    			request.getRequestDispatcher("error.jsp").forward(request, response);
