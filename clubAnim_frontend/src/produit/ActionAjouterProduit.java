@@ -1,6 +1,7 @@
 package produit;
 
 import j2ee.ClientSessionBeanRemote;
+import j2ee.Produit;
 import j2ee.ProduitSessionBeanRemote;
 
 import java.io.IOException;
@@ -37,13 +38,20 @@ public class ActionAjouterProduit extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
-		int quantite = Integer.parseInt(request.getParameter("quantite"));
+		int  ref = Integer.parseInt(request.getParameter("ref"));
+		String name = request.getParameter("name");
+		String description = request.getParameter("description");
+		float prix = Integer.parseInt(request.getParameter("prix"));
+		String categorie = request.getParameter("categorie");
+		String sousCategorie = request.getParameter("sousCategorie");
+		String cheminVersImage = request.getParameter("cheminVersImage");
+		Produit newProduit = new Produit(ref, name, description, prix, categorie, sousCategorie, cheminVersImage);
+		
 		
 		try {
 			Context c = new InitialContext();
 			ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-			sessionBean.ajouterProduit(idProduit, quantite);
+			sessionBean.ajouterProduit(newProduit);
 			//response.sendRedirect("produitAjoute.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);

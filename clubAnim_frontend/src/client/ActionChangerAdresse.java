@@ -37,17 +37,17 @@ public class ActionChangerAdresse extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idClient = Integer.parseInt(request.getParameter("idClient"));
+		String login = request.getParameter("login");
 		String rue = request.getParameter("rue");
 		String numero = request.getParameter("numero");
 		String ville = request.getParameter("ville");
 		int codePostal = Integer.parseInt(request.getParameter("codePostal"));
-		Adresse adresse = new Adresse(rue, numero, ville, codePostal);
+		Adresse newAdresse = new Adresse(rue, numero, ville, codePostal);
 		
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			sessionBean.changerAdresse(idClient, adresse);
+			sessionBean.changerAdresse(login, newAdresse);
 			//response.sendRedirect("ChangementDAdresseEffectueAvecSucces.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);

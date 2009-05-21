@@ -1,7 +1,12 @@
 package client;
 
+import j2ee.Adresse;
 import j2ee.ClientSessionBeanRemote;
+import j2ee.Commande;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -38,16 +43,25 @@ public class ActionCreer extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int numeroClient = Integer.parseInt(request.getParameter("numeroClient"));
 		String login = request.getParameter("login");
+		String role = request.getParameter("role");
+		float reduc = Integer.parseInt(request.getParameter("reduc"));
 		String password = request.getParameter("password");
-		String name = request.getParameter("name");
 		String beneficiaire = request.getParameter("beneficiaire");
 		String email = request.getParameter("email");
-		int numeroTelephone = Integer.parseInt(request.getParameter("numeroTelephone"));
+		String tel = request.getParameter("tel");
+		//adresse
+		String rue = request.getParameter("rue");
+		String numero = request.getParameter("numero");
+		String ville = request.getParameter("ville");
+		int codePostal = Integer.parseInt(request.getParameter("codePostal"));
+		Adresse adr = new Adresse(rue, numero, ville, codePostal);
+		//commande
+		ArrayList<Commande> listeDesCommande = new ArrayList<Commande>();
 		
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			sessionBean.creer(numeroClient, login, password, name, beneficiaire, email, numeroTelephone);
+			sessionBean.creer(login, role, reduc, password, beneficiaire, email, tel, adr, listeDesCommande);
 			//response.sendRedirect("creationClientOk.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);
