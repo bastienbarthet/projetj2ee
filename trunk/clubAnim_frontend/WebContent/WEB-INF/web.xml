@@ -259,4 +259,14 @@
     <servlet-name>ActionSupprimerProduit</servlet-name>
     <url-pattern>/ActionSupprimerProduit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ActionCreerProduit</display-name>
+    <servlet-name>ActionCreerProduit</servlet-name>
+    <servlet-class>produit.ActionCreerProduit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActionCreerProduit</servlet-name>
+    <url-pattern>/ActionCreerProduit</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -36,13 +36,13 @@ public class ActionChangerMail extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idClient = Integer.parseInt(request.getParameter("idClient"));
+		String login = request.getParameter("login");
 		String newMail = request.getParameter("newMail");
 		
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/beansEAR/AccountSessionBean/remote");
-			sessionBean.changerMail(idClient, newMail);
+			sessionBean.changerMail(login, newMail);
 			//response.sendRedirect("emailChangeAvecSucces.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);

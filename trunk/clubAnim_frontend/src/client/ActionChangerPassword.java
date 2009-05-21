@@ -36,14 +36,14 @@ public class ActionChangerPassword extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idClient = Integer.parseInt(request.getParameter("idClient"));
+		String login = request.getParameter("login");
 		String ancienMotDePasse = request.getParameter("ancienMotDePasse");
 		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse");
 		
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			sessionBean.changerPasswordClient(idClient, ancienMotDePasse, nouveauMotDePasse);
+			sessionBean.changerPasswordClient(login, ancienMotDePasse, nouveauMotDePasse);
 			//response.sendRedirect("motDePasseChangeAvecSucces.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);

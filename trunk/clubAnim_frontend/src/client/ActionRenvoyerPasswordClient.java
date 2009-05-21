@@ -36,12 +36,12 @@ public class ActionRenvoyerPasswordClient extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idClient = Integer.parseInt(request.getParameter("idClient"));
+		String login = request.getParameter("login");
 		
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			sessionBean.renvoyerPasswordClient(idClient);
+			sessionBean.renvoyerPasswordClient(login);
 			//response.sendRedirect("voiciLePasswordClient.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);

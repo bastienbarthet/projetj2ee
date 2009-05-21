@@ -36,13 +36,13 @@ public class ActionChangerReductionClient extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idClient = Integer.parseInt(request.getParameter("idClient"));
+		String login = request.getParameter("login");
 		int newReducClient = Integer.parseInt(request.getParameter("newReducClient"));
 		
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			sessionBean.changerReductionClient(idClient, newReducClient);
+			sessionBean.changerReductionClient(login, newReducClient);
 			//response.sendRedirect("creationClientOk.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);

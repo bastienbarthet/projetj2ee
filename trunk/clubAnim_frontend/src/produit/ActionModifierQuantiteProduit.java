@@ -1,5 +1,6 @@
 package produit;
 
+import j2ee.ClientSessionBeanRemote;
 import j2ee.ProduitSessionBeanRemote;
 
 import java.io.IOException;
@@ -12,15 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ActionModifierSousCategorie
+ * Servlet implementation class ActionChangerQuantiteProduit
  */
-public class ActionModifierSousCategorie extends HttpServlet {
+public class ActionModifierQuantiteProduit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionModifierSousCategorie() {
+    public ActionModifierQuantiteProduit() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,12 +38,12 @@ public class ActionModifierSousCategorie extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
-		String newSousCategorie = request.getParameter("newSousCategorie");
+		int newQuantite = Integer.parseInt(request.getParameter("newQuantite"));
 		
 		try {
 			Context c = new InitialContext();
 			ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-			sessionBean.modifierSousCategorie(idProduit, newSousCategorie);
+			sessionBean.modifierQuantite(idProduit, newQuantite);
 			//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);
