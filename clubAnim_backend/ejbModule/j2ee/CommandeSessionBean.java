@@ -51,7 +51,7 @@ public class CommandeSessionBean implements CommandeSessionBeanRemote {
 	public void modifierQuantiteProduit(int idCommande, int idProduit, int newQuantite) {
 		
 		Produit p = em.find(Produit.class, idProduit);
-		em.find(Commande.class, idCommande).changerQuantité(p, newQuantite);
+		em.find(Commande.class, idCommande).changerQuantite(p, newQuantite);
 
 	}
 

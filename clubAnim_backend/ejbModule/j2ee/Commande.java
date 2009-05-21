@@ -79,7 +79,7 @@ public class Commande{
 		listeDesProduits.ajouter(newProduit, quantite);
 	}
 	
-	public boolean changerQuantité(Produit p, int newQuantite){
+	public boolean changerQuantite(Produit p, int newQuantite){
 		ListeProduitCategorie lc = listeDesProduits.getListeDeCategorie().get(p.getCategorie());
 		if (lc ==null){
 			return false;
