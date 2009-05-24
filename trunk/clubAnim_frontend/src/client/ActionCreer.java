@@ -41,10 +41,9 @@ public class ActionCreer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int numeroClient = Integer.parseInt(request.getParameter("numeroClient"));
 		String login = request.getParameter("login");
 		String role = request.getParameter("role");
-		float reduc = Integer.parseInt(request.getParameter("reduc"));
+		Float reduc = (float)Integer.parseInt(request.getParameter("reduc"));
 		String password = request.getParameter("password");
 		String beneficiaire = request.getParameter("beneficiaire");
 		String email = request.getParameter("email");
