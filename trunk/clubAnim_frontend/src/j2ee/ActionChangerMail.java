@@ -1,4 +1,4 @@
-package client;
+package j2ee;
 
 import j2ee.ClientSessionBeanRemote;
 
@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ActionChangerReductionClient
+ * Servlet implementation class ActionChangerMail
  */
-public class ActionChangerReductionClient extends HttpServlet {
+public class ActionChangerMail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionChangerReductionClient() {
+    public ActionChangerMail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,13 +37,13 @@ public class ActionChangerReductionClient extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String login = request.getParameter("login");
-		int newReducClient = Integer.parseInt(request.getParameter("newReducClient"));
+		String newMail = request.getParameter("newMail");
 		
 		try {
 			Context c = new InitialContext();
-			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			sessionBean.changerReductionClient(login, newReducClient);
-			//response.sendRedirect("creationClientOk.html");
+			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/beansEAR/AccountSessionBean/remote");
+			sessionBean.changerMail(login, newMail);
+			//response.sendRedirect("emailChangeAvecSucces.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);
    			request.getRequestDispatcher("error.jsp").forward(request, response);

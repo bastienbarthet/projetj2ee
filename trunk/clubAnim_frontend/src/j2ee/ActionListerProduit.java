@@ -1,7 +1,5 @@
-package produit;
+package j2ee;
 
-import j2ee.ClientSessionBeanRemote;
-import j2ee.Produit;
 import j2ee.ProduitSessionBeanRemote;
 
 import java.io.IOException;
@@ -12,17 +10,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ActionAjouterProduit
+ * Servlet implementation class ActionListerProduit
  */
-public class ActionAjouterProduit extends HttpServlet {
+public class ActionListerProduit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionAjouterProduit() {
+    public ActionListerProduit() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,23 +37,24 @@ public class ActionAjouterProduit extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int  ref = Integer.parseInt(request.getParameter("ref"));
-		String name = request.getParameter("name");
-		String description = request.getParameter("description");
-		float prix = Integer.parseInt(request.getParameter("prix"));
-		String categorie = request.getParameter("categorie");
-		String sousCategorie = request.getParameter("sousCategorie");
-		String cheminVersImage = request.getParameter("cheminVersImage");
-		Produit newProduit = new Produit(ref, name, description, prix, categorie, sousCategorie, cheminVersImage);
 		
+		HttpSession session = request.getSession();
+		String role = (String)session.getAttribute("role");
+		
+		if (role.equals("admin")){
 		try {
 			Context c = new InitialContext();
 			ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-			//sessionBean.ajouterProduit(newProduit);
-			//response.sendRedirect("produitAjoute.html");
+			sessionBean.listerProduit();
+			//response.sendRedirect("listeDesProduits.html");
+			// surement un jsp pour fair du joli code html
 		} catch (Exception e) {
    			request.setAttribute("error",e);
    			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
+		}
+		else {
+			//redirection
 		}
 	}
 

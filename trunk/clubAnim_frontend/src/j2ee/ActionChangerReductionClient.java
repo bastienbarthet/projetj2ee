@@ -1,10 +1,8 @@
-package client;
+package j2ee;
 
-import j2ee.Client;
 import j2ee.ClientSessionBeanRemote;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -14,15 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ActinListerClient
+ * Servlet implementation class ActionChangerReductionClient
  */
-public class ActionListerClient extends HttpServlet {
+public class ActionChangerReductionClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionListerClient() {
+    public ActionChangerReductionClient() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,13 +36,14 @@ public class ActionListerClient extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String login = request.getParameter("login");
+		int newReducClient = Integer.parseInt(request.getParameter("newReducClient"));
 		
 		try {
 			Context c = new InitialContext();
 			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
-			ArrayList<Client> listeDesClients = sessionBean.listerClient();
-			// la va faloir creer du code html pour afficher la liste des clients, ds un jsp par exemple
-			//response.sendRedirect("la liste des clients.html");
+			sessionBean.changerReductionClient(login, newReducClient);
+			//response.sendRedirect("creationClientOk.html");
 		} catch (Exception e) {
    			request.setAttribute("error",e);
    			request.getRequestDispatcher("error.jsp").forward(request, response);

@@ -9,23 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>Action</display-name>
-    <servlet-name>Action</servlet-name>
-    <servlet-class>site.Action</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Action</servlet-name>
-    <url-pattern>/Action</url-pattern>
-  </servlet-mapping>
+  
 
 
   <servlet>
     <description></description>
     <display-name>ActionIdentifier</display-name>
     <servlet-name>ActionIdentifier</servlet-name>
-    <servlet-class>client.ActionIdentifier</servlet-class>
+    <servlet-class>j2ee.ActionIdentifier</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionIdentifier</servlet-name>
@@ -36,7 +27,7 @@
     <description></description>
     <display-name>ActionCreer</display-name>
     <servlet-name>ActionCreer</servlet-name>
-    <servlet-class>client.ActionCreer</servlet-class>
+    <servlet-class>j2ee.ActionCreer</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionCreer</servlet-name>
@@ -47,7 +38,7 @@
   <description></description>
     <display-name>ActionChangerPassword</display-name>
     <servlet-name>ActionChangerPassword</servlet-name>
-    <servlet-class>client.ActionChangerPassword</servlet-class>
+    <servlet-class>j2ee.ActionChangerPassword</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionChangerPassword</servlet-name>
@@ -58,7 +49,7 @@
     <description></description>
     <display-name>ActionChangerAdresse</display-name>
     <servlet-name>ActionChangerAdresse</servlet-name>
-    <servlet-class>client.ActionChangerAdresse</servlet-class>
+    <servlet-class>j2ee.ActionChangerAdresse</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionChangerAdresse</servlet-name>
@@ -69,7 +60,7 @@
     <description></description>
     <display-name>ActionChangerTelephone</display-name>
     <servlet-name>ActionChangerTelephone</servlet-name>
-    <servlet-class>client.ActionChangerTelephone</servlet-class>
+    <servlet-class>j2ee.ActionChangerTelephone</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionChangerTelephone</servlet-name>
@@ -80,7 +71,7 @@
     <description></description>
     <display-name>ActionChangerMail</display-name>
     <servlet-name>ActionChangerMail</servlet-name>
-    <servlet-class>client.ActionChangerMail</servlet-class>
+    <servlet-class>j2ee.ActionChangerMail</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionChangerMail</servlet-name>
@@ -91,7 +82,7 @@
     <description></description>
     <display-name>ActionRenvoyerPasswordClient</display-name>
     <servlet-name>ActionRenvoyerPasswordClient</servlet-name>
-    <servlet-class>client.ActionRenvoyerPasswordClient</servlet-class>
+    <servlet-class>j2ee.ActionRenvoyerPasswordClient</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionRenvoyerPasswordClient</servlet-name>
@@ -102,7 +93,7 @@
     <description></description>
     <display-name>ActionListerClient</display-name>
     <servlet-name>ActionListerClient</servlet-name>
-    <servlet-class>client.ActionListerClient</servlet-class>
+    <servlet-class>j2ee.ActionListerClient</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionListerClient</servlet-name>
@@ -113,7 +104,7 @@
     <description></description>
     <display-name>ActionChangerReductionClient</display-name>
     <servlet-name>ActionChangerReductionClient</servlet-name>
-    <servlet-class>client.ActionChangerReductionClient</servlet-class>
+    <servlet-class>j2ee.ActionChangerReductionClient</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionChangerReductionClient</servlet-name>
@@ -124,7 +115,7 @@
     <description></description>
     <display-name>ActionAjouterProduit</display-name>
     <servlet-name>ActionAjouterProduit</servlet-name>
-    <servlet-class>produit.ActionAjouterProduit</servlet-class>
+    <servlet-class>j2ee.ActionAjouterProduit</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionAjouterProduit</servlet-name>
@@ -135,7 +126,7 @@
     <description></description>
     <display-name>ActionChangerQuantiteProduit</display-name>
     <servlet-name>ActionChangerQuantiteProduit</servlet-name>
-    <servlet-class>produit.ActionChangerQuantiteProduit</servlet-class>
+    <servlet-class>j2ee.ActionChangerQuantiteProduit</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionChangerQuantiteProduit</servlet-name>
@@ -146,7 +137,7 @@
     <description></description>
     <display-name>ActionListerProduit</display-name>
     <servlet-name>ActionListerProduit</servlet-name>
-    <servlet-class>produit.ActionListerProduit</servlet-class>
+    <servlet-class>j2ee.ActionListerProduit</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionListerProduit</servlet-name>
@@ -157,7 +148,7 @@
     <description></description>
     <display-name>ActionListerProduitCategorie</display-name>
     <servlet-name>ActionListerProduitCategorie</servlet-name>
-    <servlet-class>produit.ActionListerProduitCategorie</servlet-class>
+    <servlet-class>j2ee.ActionListerProduitCategorie</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionListerProduitCategorie</servlet-name>
@@ -168,7 +159,7 @@
     <description></description>
     <display-name>ActionListerProduitSousCategorie</display-name>
     <servlet-name>ActionListerProduitSousCategorie</servlet-name>
-    <servlet-class>produit.ActionListerProduitSousCategorie</servlet-class>
+    <servlet-class>j2ee.ActionListerProduitSousCategorie</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionListerProduitSousCategorie</servlet-name>
@@ -179,7 +170,7 @@
     <description></description>
     <display-name>ActionModifierCheminVersImage</display-name>
     <servlet-name>ActionModifierCheminVersImage</servlet-name>
-    <servlet-class>produit.ActionModifierCheminVersImage</servlet-class>
+    <servlet-class>j2ee.ActionModifierCheminVersImage</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionModifierCheminVersImage</servlet-name>
@@ -190,7 +181,7 @@
     <description></description>
     <display-name>ActionModifierDescription</display-name>
     <servlet-name>ActionModifierDescription</servlet-name>
-    <servlet-class>produit.ActionModifierDescription</servlet-class>
+    <servlet-class>j2ee.ActionModifierDescription</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionModifierDescription</servlet-name>
@@ -201,7 +192,7 @@
     <description></description>
     <display-name>ActionModifierPrix</display-name>
     <servlet-name>ActionModifierPrix</servlet-name>
-    <servlet-class>produit.ActionModifierPrix</servlet-class>
+    <servlet-class>j2ee.ActionModifierPrix</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionModifierPrix</servlet-name>
@@ -212,7 +203,7 @@
     <description></description>
     <display-name>ActionModifierQuantite</display-name>
     <servlet-name>ActionModifierQuantite</servlet-name>
-    <servlet-class>produit.ActionModifierQuantite</servlet-class>
+    <servlet-class>j2ee.ActionModifierQuantite</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionModifierQuantite</servlet-name>
@@ -223,7 +214,7 @@
     <description></description>
     <display-name>ActionModifierTitre</display-name>
     <servlet-name>ActionModifierTitre</servlet-name>
-    <servlet-class>produit.ActionModifierTitre</servlet-class>
+    <servlet-class>j2ee.ActionModifierTitre</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionModifierTitre</servlet-name>
@@ -233,7 +224,7 @@
     <description></description>
     <display-name>ActionSupprimerProduit</display-name>
     <servlet-name>ActionSupprimerProduit</servlet-name>
-    <servlet-class>produit.ActionSupprimerProduit</servlet-class>
+    <servlet-class>j2ee.ActionSupprimerProduit</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionSupprimerProduit</servlet-name>
@@ -243,7 +234,7 @@
     <description></description>
     <display-name>ActionCreerProduit</display-name>
     <servlet-name>ActionCreerProduit</servlet-name>
-    <servlet-class>produit.ActionCreerProduit</servlet-class>
+    <servlet-class>j2ee.ActionCreerProduit</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ActionCreerProduit</servlet-name>

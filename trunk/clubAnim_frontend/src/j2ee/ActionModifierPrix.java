@@ -1,4 +1,4 @@
-package produit;
+package j2ee;
 
 import j2ee.ProduitSessionBeanRemote;
 
