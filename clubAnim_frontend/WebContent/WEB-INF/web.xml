@@ -19,26 +19,8 @@
     <servlet-name>Action</servlet-name>
     <url-pattern>/Action</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ActionCreateClient</display-name>
-    <servlet-name>ActionCreateClient</servlet-name>
-    <servlet-class>site.ActionCreateClient</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ActionCreateClient</servlet-name>
-    <url-pattern>/ActionCreateClient</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ActionGetName</display-name>
-    <servlet-name>ActionGetName</servlet-name>
-    <servlet-class>site.ActionGetName</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ActionGetName</servlet-name>
-    <url-pattern>/ActionGetName</url-pattern>
-  </servlet-mapping>
+
+
   <servlet>
     <description></description>
     <display-name>ActionIdentifier</display-name>
@@ -49,6 +31,7 @@
     <servlet-name>ActionIdentifier</servlet-name>
     <url-pattern>/ActionIdentifier</url-pattern>
   </servlet-mapping>
+ 
   <servlet>
     <description></description>
     <display-name>ActionCreer</display-name>
@@ -60,7 +43,8 @@
     <url-pattern>/ActionCreer</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+  
+  <description></description>
     <display-name>ActionChangerPassword</display-name>
     <servlet-name>ActionChangerPassword</servlet-name>
     <servlet-class>client.ActionChangerPassword</servlet-class>
@@ -69,6 +53,7 @@
     <servlet-name>ActionChangerPassword</servlet-name>
     <url-pattern>/ActionChangerPassword</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionChangerAdresse</display-name>
@@ -79,6 +64,7 @@
     <servlet-name>ActionChangerAdresse</servlet-name>
     <url-pattern>/ActionChangerAdresse</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionChangerTelephone</display-name>
@@ -89,6 +75,7 @@
     <servlet-name>ActionChangerTelephone</servlet-name>
     <url-pattern>/ActionChangerTelephone</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionChangerMail</display-name>
@@ -99,6 +86,7 @@
     <servlet-name>ActionChangerMail</servlet-name>
     <url-pattern>/ActionChangerMail</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionRenvoyerPasswordClient</display-name>
@@ -109,16 +97,18 @@
     <servlet-name>ActionRenvoyerPasswordClient</servlet-name>
     <url-pattern>/ActionRenvoyerPasswordClient</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
-    <display-name>ActinListerClient</display-name>
-    <servlet-name>ActinListerClient</servlet-name>
-    <servlet-class>client.ActinListerClient</servlet-class>
+    <display-name>ActionListerClient</display-name>
+    <servlet-name>ActionListerClient</servlet-name>
+    <servlet-class>client.ActionListerClient</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ActinListerClient</servlet-name>
-    <url-pattern>/ActinListerClient</url-pattern>
+    <servlet-name>ActionListerClient</servlet-name>
+    <url-pattern>/ActionListerClient</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionChangerReductionClient</display-name>
@@ -129,6 +119,7 @@
     <servlet-name>ActionChangerReductionClient</servlet-name>
     <url-pattern>/ActionChangerReductionClient</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionAjouterProduit</display-name>
@@ -139,6 +130,7 @@
     <servlet-name>ActionAjouterProduit</servlet-name>
     <url-pattern>/ActionAjouterProduit</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionChangerQuantiteProduit</display-name>
@@ -149,6 +141,7 @@
     <servlet-name>ActionChangerQuantiteProduit</servlet-name>
     <url-pattern>/ActionChangerQuantiteProduit</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionListerProduit</display-name>
@@ -159,16 +152,18 @@
     <servlet-name>ActionListerProduit</servlet-name>
     <url-pattern>/ActionListerProduit</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
-    <display-name>ActionlisterProduitCategorie</display-name>
-    <servlet-name>ActionlisterProduitCategorie</servlet-name>
-    <servlet-class>produit.ActionlisterProduitCategorie</servlet-class>
+    <display-name>ActionListerProduitCategorie</display-name>
+    <servlet-name>ActionListerProduitCategorie</servlet-name>
+    <servlet-class>produit.ActionListerProduitCategorie</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ActionlisterProduitCategorie</servlet-name>
-    <url-pattern>/ActionlisterProduitCategorie</url-pattern>
+    <servlet-name>ActionListerProduitCategorie</servlet-name>
+    <url-pattern>/ActionListerProduitCategorie</url-pattern>
   </servlet-mapping>
+ 
   <servlet>
     <description></description>
     <display-name>ActionListerProduitSousCategorie</display-name>
@@ -179,16 +174,7 @@
     <servlet-name>ActionListerProduitSousCategorie</servlet-name>
     <url-pattern>/ActionListerProduitSousCategorie</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ActionModifierCategorie</display-name>
-    <servlet-name>ActionModifierCategorie</servlet-name>
-    <servlet-class>produit.ActionModifierCategorie</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ActionModifierCategorie</servlet-name>
-    <url-pattern>/ActionModifierCategorie</url-pattern>
-  </servlet-mapping>
+ 
   <servlet>
     <description></description>
     <display-name>ActionModifierCheminVersImage</display-name>
@@ -199,6 +185,7 @@
     <servlet-name>ActionModifierCheminVersImage</servlet-name>
     <url-pattern>/ActionModifierCheminVersImage</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionModifierDescription</display-name>
@@ -209,6 +196,7 @@
     <servlet-name>ActionModifierDescription</servlet-name>
     <url-pattern>/ActionModifierDescription</url-pattern>
   </servlet-mapping>
+ 
   <servlet>
     <description></description>
     <display-name>ActionModifierPrix</display-name>
@@ -219,6 +207,7 @@
     <servlet-name>ActionModifierPrix</servlet-name>
     <url-pattern>/ActionModifierPrix</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionModifierQuantite</display-name>
@@ -229,16 +218,7 @@
     <servlet-name>ActionModifierQuantite</servlet-name>
     <url-pattern>/ActionModifierQuantite</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ActionModifierSousCategorie</display-name>
-    <servlet-name>ActionModifierSousCategorie</servlet-name>
-    <servlet-class>produit.ActionModifierSousCategorie</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ActionModifierSousCategorie</servlet-name>
-    <url-pattern>/ActionModifierSousCategorie</url-pattern>
-  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ActionModifierTitre</display-name>
