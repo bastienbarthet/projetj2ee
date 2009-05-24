@@ -1,4 +1,4 @@
-package produit;
+package j2ee;
 
 import j2ee.ProduitSessionBeanRemote;
 
@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ActionModifierCheminVersImage
+ * Servlet implementation class ActionlisterProduitCategorie
  */
-public class ActionModifierCheminVersImage extends HttpServlet {
+public class ActionListerProduitCategorie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionModifierCheminVersImage() {
+    public ActionListerProduitCategorie() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +37,7 @@ public class ActionModifierCheminVersImage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
-		String newChemin = request.getParameter("newChemin");
+		String categorie = request.getParameter("categorie");
 		
 		HttpSession session = request.getSession();
 		String role = (String)session.getAttribute("role");
@@ -47,8 +46,8 @@ public class ActionModifierCheminVersImage extends HttpServlet {
 			try {
 				Context c = new InitialContext();
 				ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-				sessionBean.modifierCheminVersImage(idProduit, newChemin);
-				//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
+				sessionBean.listerProduitCategorie(categorie);
+				//response.sendRedirect("listesDesProduitsParCategorie.html");
 			} catch (Exception e) {
 	   			request.setAttribute("error",e);
 	   			request.getRequestDispatcher("error.jsp").forward(request, response);

@@ -1,6 +1,5 @@
-package produit;
+package j2ee;
 
-import j2ee.ClientSessionBeanRemote;
 import j2ee.ProduitSessionBeanRemote;
 
 import java.io.IOException;
@@ -14,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ActionChangerQuantiteProduit
+ * Servlet implementation class ActionModifierQuantite
  */
-public class ActionModifierQuantiteProduit extends HttpServlet {
+public class ActionModifierQuantite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionModifierQuantiteProduit() {
+    public ActionModifierQuantite() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -56,7 +55,7 @@ public class ActionModifierQuantiteProduit extends HttpServlet {
 			}
 		}
 		else {
-			//on redirige vers la bone page
+			//on redirige
 		}
 	}
 

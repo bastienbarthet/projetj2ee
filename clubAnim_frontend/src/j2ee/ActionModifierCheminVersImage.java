@@ -1,4 +1,4 @@
-package produit;
+package j2ee;
 
 import j2ee.ProduitSessionBeanRemote;
 
@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ActionListerProduitSousCategorie
+ * Servlet implementation class ActionModifierCheminVersImage
  */
-public class ActionListerProduitSousCategorie extends HttpServlet {
+public class ActionModifierCheminVersImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionListerProduitSousCategorie() {
+    public ActionModifierCheminVersImage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +37,8 @@ public class ActionListerProduitSousCategorie extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sousCategorie = request.getParameter("sousCategorie");
+		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
+		String newChemin = request.getParameter("newChemin");
 		
 		HttpSession session = request.getSession();
 		String role = (String)session.getAttribute("role");
@@ -46,15 +47,15 @@ public class ActionListerProduitSousCategorie extends HttpServlet {
 			try {
 				Context c = new InitialContext();
 				ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-				sessionBean.listerProduitSousCategorie(sousCategorie);
-				//response.sendRedirect("listesDesProduitsParSousCategorie.html");
+				sessionBean.modifierCheminVersImage(idProduit, newChemin);
+				//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
 			} catch (Exception e) {
 	   			request.setAttribute("error",e);
 	   			request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 		}
 		else {
-			// on redirige
+			//on redirige
 		}
 	}
 

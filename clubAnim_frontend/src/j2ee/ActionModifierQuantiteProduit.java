@@ -1,5 +1,6 @@
-package produit;
+package j2ee;
 
+import j2ee.ClientSessionBeanRemote;
 import j2ee.ProduitSessionBeanRemote;
 
 import java.io.IOException;
@@ -13,15 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ActionlisterProduitCategorie
+ * Servlet implementation class ActionChangerQuantiteProduit
  */
-public class ActionListerProduitCategorie extends HttpServlet {
+public class ActionModifierQuantiteProduit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionListerProduitCategorie() {
+    public ActionModifierQuantiteProduit() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +38,8 @@ public class ActionListerProduitCategorie extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String categorie = request.getParameter("categorie");
+		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
+		int newQuantite = Integer.parseInt(request.getParameter("newQuantite"));
 		
 		HttpSession session = request.getSession();
 		String role = (String)session.getAttribute("role");
@@ -46,15 +48,15 @@ public class ActionListerProduitCategorie extends HttpServlet {
 			try {
 				Context c = new InitialContext();
 				ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-				sessionBean.listerProduitCategorie(categorie);
-				//response.sendRedirect("listesDesProduitsParCategorie.html");
+				sessionBean.modifierQuantite(idProduit, newQuantite);
+				//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
 			} catch (Exception e) {
 	   			request.setAttribute("error",e);
 	   			request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 		}
 		else {
-			//on redirige
+			//on redirige vers la bone page
 		}
 	}
 

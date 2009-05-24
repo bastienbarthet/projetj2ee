@@ -1,4 +1,4 @@
-package produit;
+package j2ee;
 
 import j2ee.ProduitSessionBeanRemote;
 
@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ActionSupprimerProduit
+ * Servlet implementation class ActionModifierTitre
  */
-public class ActionSupprimerProduit extends HttpServlet {
+public class ActionModifierTitre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActionSupprimerProduit() {
+    public ActionModifierTitre() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,6 +38,7 @@ public class ActionSupprimerProduit extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idProduit = Integer.parseInt(request.getParameter("idProduit"));
+		String newTitre = request.getParameter("newTitre");
 		
 		HttpSession session = request.getSession();
 		String role = (String)session.getAttribute("role");
@@ -46,17 +47,16 @@ public class ActionSupprimerProduit extends HttpServlet {
 			try {
 				Context c = new InitialContext();
 				ProduitSessionBeanRemote sessionBean = (ProduitSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ProduitSessionBean/remote");
-				sessionBean.supprimerProduit(idProduit);
+				sessionBean.modifierTitre(idProduit, newTitre);
 				//response.sendRedirect("changementDeuantiteEffectueeAvecSucces.html");
 			} catch (Exception e) {
 	   			request.setAttribute("error",e);
+	   			request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 		}
-		
 		else {
-			//rediriger vers l'autentification
+			//redirection vers l'identifictoin
 		}
-   			
 	}
 
 }
