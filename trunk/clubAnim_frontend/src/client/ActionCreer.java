@@ -1,20 +1,15 @@
 package client;
 
-import j2ee.Adresse;
-import j2ee.ClientSessionBeanRemote;
-import j2ee.Commande;
-
+import j2ee.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.jboss.management.j2ee.SessionBean;
+//import org.jboss.management.j2ee.SessionBean;
 
 /**
  * Servlet implementation class ActionCreer
@@ -59,7 +54,7 @@ public class ActionCreer extends HttpServlet {
 		
 		try {
 			Context c = new InitialContext();
-			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/ClientSessionBean/remote");
+			ClientSessionBeanRemote sessionBean = (ClientSessionBeanRemote) c.lookup("/clubAnim_beansEAR/j2ee.ClientSessionBean/remote");
 			sessionBean.creer(login, role, reduc, password, beneficiaire, email, tel, adr, listeDesCommande);
 			//response.sendRedirect("creationClientOk.html");
 		} catch (Exception e) {
