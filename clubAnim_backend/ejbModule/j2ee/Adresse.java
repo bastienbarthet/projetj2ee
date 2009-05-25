@@ -2,7 +2,7 @@ package j2ee;
 import javax.persistence.*;
 
 
-@ Entity
+
 public class Adresse{
 	
 	public String numero;
