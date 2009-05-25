@@ -22,7 +22,6 @@ public class Commande{
 	private Date dateSortieMateriel;
 	private Date dateRetourMateriel;
 
-	@OneToMany
 	private ListeProduitCommande listeDesProduits;
 	
 	

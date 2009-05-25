@@ -26,8 +26,6 @@ public class Client{
 	private String tel;
 	private Adresse adr;
 
-	
-	@OneToMany
 	private ArrayList<Commande> listeDesCommande;
 	
 
